@@ -1,5 +1,5 @@
 -- UNICONGRESSOS BD - 
---drop database db_unicongressos -- N√O RETIRAR O COMENT¡RIO SE N√O APAGA O BANCO !!
+--drop database db_unicongressos -- N√ÉO RETIRAR O COMENT√ÅRIO SE N√ÉO APAGA O BANCO !!
 
 
 -- DATABASE UNICONGRESSOS
@@ -45,44 +45,23 @@ create table tb_palestra (
 id_palestra int identity (1,1) not null,
 tema_palestra varchar(100) not null,
 local_palestra varchar (50),
-data_palestra datetime,
-id_preletor int,
-id_congresso int,
+hora_palestra time,
+data_palestra date,
 descricao_palestra varchar(max),
+nome_palestrante varchar (100),
+contatos_palestrante varchar(50),
+telefone_palestrante int,
+descricao_palestrante varchar (max),
+id_congresso int,
+
 constraint pk_palestra primary key (id_palestra),
 constraint fk_palestcongresso foreign key (id_congresso)
  references tb_congresso (id_congresso),
---constraint fk_palestpreletor foreign key (id_preletor)references tb_preletor (id_preletor),
 )
-
-alter table tb_palestra
-add constraint fk_palestpreletor foreign key (id_preletor)references tb_preletor (id_preletor)
-
-
---***********************************//*****************************
--- TABELA PRELETOR
-create table tb_preletor(
-id_preletor int identity (1,1) not null,
-cpf_preletor varchar (11),
-nome_preletor varchar (100),
-endereco_preletor varchar (50),
-bairro_preletor varchar(50),
-cidade_preletor varchar(50),
-estado_preletor varchar(50),
-email_preletor varchar(50),
-telefone_preletor int,
-descricao_preletor varchar (max),
-id_congresso int,
-id_palestra int,
-constraint pk_preletor primary key (id_preletor),
-constraint fk_preletorpalestra foreign key (id_palestra) references tb_palestra (id_palestra),
-)
-alter table tb_preletor 
-add constraint fk_preletorcongresso foreign key (id_congresso) references tb_congresso (id_congresso)
 
 --***************************************//*************************************
 
--- TABELA USU¡RIO
+-- TABELA USU√ÅRIO
 create table tb_usuario(
 id_usuario int identity (1,1) not null,
 cpf_usuario char(11) not null,
