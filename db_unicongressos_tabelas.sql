@@ -16,6 +16,11 @@ email_login varchar(100) not null,
 senha_login varchar(8) not null,
 constraint pk_login primary key (id_login)
 )
+alter table tb_loginusuario
+add constraint fk_email_login foreign key (email_usuario)
+references tb_usuario (email_usuario)
+constraint fk_senha_login foreign key (senha_usuario)
+references tb_usuario (senha_usuario)
 
 -- TABELA CONGRESSO
 
